@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 
 interface ScrollAnimationProps {
   children: React.ReactNode;
@@ -16,7 +16,7 @@ const ScrollAnimation = ({ children, delay = 0, direction = "up" }: ScrollAnimat
     amount: 0.1,
   });
 
-  const variants = {
+  const variants: Variants = {
     hidden: {
       opacity: 0,
       y: direction === "up" ? 50 : direction === "down" ? -50 : 0,
@@ -29,7 +29,7 @@ const ScrollAnimation = ({ children, delay = 0, direction = "up" }: ScrollAnimat
       transition: {
         duration: 0.8,
         delay: delay,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   };
